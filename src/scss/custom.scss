@@ -1,0 +1,35 @@
+// custom color
+
+$color-dark-purple: #35164C;
+
+$color-highlight: #AD2F68;
+
+$color-light-pink: #ffd5ec;
+
+$color-light-green: #D1FFD6;
+
+$color-dark-green: #31513F;
+
+$color-dark-green: #3A6452;
+
+$color-light: #FAFCFC;
+
+$color-dark: #414141;
+
+$color-light-gray: #EFF0F0;
+
+// custom fonts
+
+$font-family-logo: "agenda", sans-serif;
+
+$font-family-headings: "rigid-square", sans-serif;
+
+// bootstrap
+
+$theme-colors: (
+    "dark": $color-dark,
+    "light": $color-light,
+);
+
+/* import bootstrap to set changes */
+@import "~bootstrap/scss/bootstrap";
