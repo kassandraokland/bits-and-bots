@@ -1,20 +1,17 @@
 //import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useState, useContext } from "react";
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Form from 'react-bootstrap/Form';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-//import { BASE_URL } from "../../constants/api"; 
-//import AuthContext from "../../context/AuthContext";
 import FormError from "../common/FormError";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useCart } from "react-use-cart";
-
-//const url = BASE_URL + "/api/auth/local";
+import Modal from 'react-bootstrap/Modal';
 
 const schema = yup.object().shape({
     name: yup.string()
@@ -37,12 +34,23 @@ const schema = yup.object().shape({
 function CheckoutForm() {
     const [checkoutError, setCheckoutError] = useState(null);
     const [submitting, setSubmitting] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const { emptyCart, items } = useCart();
+
+    const navigate = useNavigate();
+
+    function onConfirm(items) {
+        emptyCart(items);
+        navigate("/products");
+    }
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
-
-    const { emptyCart, items } = useCart();
 
     //const [, setAuth] = useContext(AuthContext);
 
@@ -144,9 +152,24 @@ function CheckoutForm() {
                 </Card.Body>
             </Card>
       
-            <Button type="submit" className="mt-3 mb-3"> 
+            <Button type="submit" className="mt-3 mb-3" onClick={handleShow}> 
 			  	{submitting ? "Submitting payment..." : "Pay now"}
-		  	</Button>   
+		  	</Button> 
+
+              <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+            <Modal.Title>Payment confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to proceed with this payment?</Modal.Body>
+        <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+                Cancel
+            </Button>
+            <Button variant="primary" onClick={() => handleClose(onConfirm(items))}>
+                Confirm payment
+            </Button>
+        </Modal.Footer>
+    </Modal>  
         </Form>
         
     );
