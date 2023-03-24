@@ -1,10 +1,13 @@
 import Heading from "../layout/Heading";
-import ProductList from "./ProductList";
+//import ProductList from "./ProductList";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useState } from "react";
+import FilterButtons from "./FilterButtons";
 
-export default function ProductPage() {
+
+export default function ProductPage({data}) {
 	return (
 		<Container>
 			<Row>
@@ -12,7 +15,9 @@ export default function ProductPage() {
 					<Heading size="3" content="Products" />
 				</Col>
 			</Row>
-				<ProductList />
+			<Row>
+				<FilterButtons />
+			</Row>
 		</Container>
 	);
 }

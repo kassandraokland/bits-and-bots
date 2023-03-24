@@ -7,19 +7,20 @@ import Button from "react-bootstrap/Button";
 import { useCart } from "react-use-cart";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+//import GenreDropdown from "./GenreDropdown";
 //import ProductCard from "./ProductCard";
 
 export default function ProductList() {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	//const [card, setCard] = useState(products);
 
 	const http = useAxios();
 
 	const { 
-		addItem,
-	 } = useCart();
-	
+		addItem
+	} = useCart();
 
 	useEffect(function () {
 
@@ -42,7 +43,7 @@ export default function ProductList() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (loading) return <div>Loading posts...</div>;
+	if (loading) return <div>Loading products...</div>;
 
 	if (error) return <div>{}</div>;
 
@@ -92,6 +93,39 @@ export default function ProductList() {
 		</>
 	);
 }
+
+/**			<Dropdown				
+			>
+				<Dropdown.Toggle variant="success" id="dropdown-basic">
+					Game Genres
+				</Dropdown.Toggle>
+				<Dropdown.Menu>
+					{products.data.map((item) => {
+						return (
+							<Form.Check key={item.attributes.category.id} onClick={() => filterItem(item.id)} className='m-2' type="checkbox" id="default-checkbox" name="genre" value={item.attributes.category.data.attributes.name} label={item.attributes.category.data.attributes.name} />
+
+						)
+					})
+					}
+				</Dropdown.Menu>
+        	</Dropdown> */
+
+/**					<button
+						className="btn-dark text-white p-1 px-3 mx-5 fw-bold btn"
+						onClick={() => setProducts(products.data)}
+					>
+						All
+			</button> */
+
+/**			<GenreDropdown 
+				filterItem={filterItem}
+				setProducts={setProducts}
+				genres={genres}
+			/> */
+
+/**				const filterMenu = document.getElementById("genreFilterMenu");
+
+				const filterIsActive = filterMenu.isActive; */
 
 /**<Link to={`/products/${product.id}`}>{product.attributes.name}</Link> */
 

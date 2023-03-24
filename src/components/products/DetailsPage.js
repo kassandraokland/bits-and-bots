@@ -28,7 +28,7 @@ export default function DetailsPage() {
 
 	useEffect(
 		function () {
-			async function getPost() {
+			async function getDetails() {
 				try {
 					const response = await http.get(url);
 					console.log("response", response.data);
@@ -41,7 +41,7 @@ export default function DetailsPage() {
 				}
 			}
 
-			getPost();
+			getDetails();
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[]

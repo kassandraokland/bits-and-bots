@@ -8,7 +8,7 @@ export default function CartPage() {
 	return (
 		<Container>
 			<Row>
-				<Col xs="auto" className="m-5">
+				<Col className="m-5">
 					<Cart />
 				</Col>
 			</Row>
