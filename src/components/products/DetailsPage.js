@@ -59,30 +59,35 @@ export default function DetailsPage() {
 	}
 
 	return (
-        <Container className="product product-details">
-			<Row>
-				<Col>
-			<Heading content={product.attributes.name} />
-			</Col>
-			</Row>
-			<Row className="mb-3" key={product.id}>
-            <Col>
-                <Image src={`${BASE_URL}${product.attributes.image.data.attributes.url}`}></Image>
-			</Col>
-			<Col>
-				<p>${product.attributes.price}</p>
-				<Button onClick={() => addItem(productData)} size="sm" className="m-2">Add to cart</Button>
-            </Col>
-			</Row>
-			<Row>
-				<Col>
-					<h4>Description</h4>
-					<p>{product.attributes.description}</p>
+        <Container className="m-3 mx-auto product product-details">
+			<Row >
+				<Col className="my-4">
+					<Heading content={product.attributes.name} />
 				</Col>
+			</Row>
+			<Row className="pb-3 justify-content-center">
+					<Col xs={6} md={5}>
+						<Image className="details-page--image" src={`${BASE_URL}${product.attributes.image.data.attributes.url}`} />
+					</Col>
+					<Col  xs="auto" md={5} className="align-self-center mx-auto">
+						<p>${product.attributes.price}</p>
+						<p>{product.attributes.category.data.attributes.name}</p>
+						<Button onClick={() => addItem(productData)} size="sm" className="my-2 btn--light-green">Add to cart</Button>
+					</Col>
+			</Row>
+			<Row className="py-3 justify-content-center">
+					<Col xs="auto" md={12}>
+						<h4>Description</h4>
+						<p>{product.attributes.desc}</p>
+						<p>{product.attributes.desc2}</p>
+						<p>{product.attributes.desc3}</p>
+					</Col>
 			</Row>
         </Container>
 	);
 }
+
+//justify-content-md-center
 
 /*export default function PostList() {
 	const [posts, setPosts] = useState([]);

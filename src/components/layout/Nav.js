@@ -24,7 +24,7 @@ function NavLayout() {
     } = useCart();
 
 	return (
-		<Navbar expand="lg" className="navbar">
+		<Navbar expand="sm" variant="dark" className="navbar">
 			<Container>
 				{auth ? (
 					<Link to="products">
@@ -35,29 +35,35 @@ function NavLayout() {
 						<Navbar.Brand className="logo">Bits&Bots</Navbar.Brand>
 					</Link>
 				)}
-				<Nav>
-					{auth ? (
-						<Link to="products" className="m-2">Home</Link>
-					) : (
-						<Link to="/" className="m-2">Home</Link>
-					)}
-					{auth ? (
-						<> 
-							<Button onClick={logout} size="sm" className="m-2">Log out</Button>
-							<Link to="products" className="m-2">Products</Link>
-							<Link to="cart" className="m-2">
-								<CartFill />
-								{!isEmpty && <span style={{ position: 'relative', left: '-21px', top: '-18px'}}>{totalItems}</span>}
-                				<span style={{ marginLeft: !isEmpty ? '-13px': 0}}></span>
-							</Link>
-						</>
-					) : (
-						<Link to="/" className="m-2">Log in</Link>
-					)}
-				</Nav>
+				<Navbar.Toggle aria-controls="basic-navbar-nav"/>
+				<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+					<Nav>
+						{auth ? (
+							<Nav.Item><Link to="products" >Home</Link></Nav.Item>
+						) : (
+							<Nav.Item ><Link to="/" >Home</Link></Nav.Item>
+						)}
+						{auth ? (
+							<> 
+								<Nav.Item ><Link to="products">Products</Link></Nav.Item>
+								<Nav.Item><Button onClick={logout} size="sm" className=" btn--highlight">Log out</Button></Nav.Item>
+								<Nav.Item className="pt-2 px-4"><Link to="cart">
+									<CartFill />
+									{!isEmpty && <span style={{ position: 'relative', left: '-13px', top: '-18px'}}>{totalItems}</span>}
+									<span style={{ marginLeft: !isEmpty ? '-13px': 0}}></span>
+								</Link></Nav.Item>
+							</>
+						) : 
+							null
+						}
+					</Nav>
+				</Navbar.Collapse>
 			</Container>
 		</Navbar>
 	);
 }
+
+/**									{!isEmpty && <span style={{ position: 'relative', left: '-13px', top: '-18px'}}>{totalItems}</span>}
+									<span style={{ marginLeft: !isEmpty ? '-13px': 0}}></span> */
 
 export default NavLayout;

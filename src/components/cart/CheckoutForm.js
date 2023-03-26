@@ -1,6 +1,6 @@
 //import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Form from 'react-bootstrap/Form';
@@ -59,16 +59,18 @@ function CheckoutForm() {
         setCheckoutError(null);
 
         console.log(data);
+
+        handleShow();
     }
 
     console.log(errors);
 
     return (
         
-        <Form onSubmit={handleSubmit(onSubmit)} className="pt-3">
+        <Form onSubmit={handleSubmit(onSubmit)}>
         {checkoutError && <FormError>{checkoutError}</FormError>}
 
-            <Card>
+            <Card className='billing-info'>
                 <Card.Header>
                     <Card.Title>Billing information</Card.Title>
                 </Card.Header>
@@ -151,25 +153,27 @@ function CheckoutForm() {
                     </Form.Group>
                 </Card.Body>
             </Card>
-      
-            <Button type="submit" className="mt-3 mb-3" onClick={handleShow}> 
-			  	{submitting ? "Submitting payment..." : "Pay now"}
-		  	</Button> 
 
-              <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-            <Modal.Title>Payment confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to proceed with this payment?</Modal.Body>
-        <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-                Cancel
-            </Button>
-            <Button variant="primary" onClick={() => handleClose(onConfirm(items))}>
-                Confirm payment
-            </Button>
-        </Modal.Footer>
-    </Modal>  
+            <div className="d-grid">
+                <Button type="submit" className="my-3 mx-5 btn--green checkout__btn"> 
+                    {submitting ? "Submitting payment..." : "Pay now"}
+                </Button> 
+            </div>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Payment confirmation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to proceed with this payment?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" className='btn--highlight' onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button className='btn--green' onClick={() => handleClose(onConfirm(items))}>
+                        Confirm payment
+                    </Button>
+                </Modal.Footer>
+            </Modal>  
         </Form>
         
     );

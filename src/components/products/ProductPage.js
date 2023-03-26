@@ -1,21 +1,19 @@
 import Heading from "../layout/Heading";
-//import ProductList from "./ProductList";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useState } from "react";
 import FilterButtons from "./FilterButtons";
 
 
-export default function ProductPage({data}) {
+export default function ProductPage() {
 	return (
-		<Container>
-			<Row>
-				<Col>
+		<Container className="product-page">
+			<Row xs={10} sm={12} md={9} lg={7} className="mx-auto">
+				<Col className="mt-3 mb-1">
 					<Heading size="3" content="Products" />
 				</Col>
 			</Row>
-			<Row>
+			<Row xs={10} sm={12} md={9} lg={7} className="mx-auto">
 				<FilterButtons />
 			</Row>
 		</Container>

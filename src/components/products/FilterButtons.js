@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Select from 'react-select';
 import useAxios from "../../hooks/useAxios";
-import { Container, Row, Col, Card, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useCart } from "react-use-cart";
 import { BASE_URL } from '../../constants/api';
 import { Link } from 'react-router-dom';
-import ProductCard from './ProductCard';
+import { CartPlus, ChevronRight } from "react-bootstrap-icons";
+
 
 
 function FilterButtons() {
@@ -62,27 +63,14 @@ function FilterButtons() {
     });
     setProductsData(result);
   }
-
-  //const handleClear = setProductsData(products);
-
-  const ClearValue = () => {
-    setProductsData(products);
-  }
-  
-  
-  /*({ innerProps, isDisabled }) =>
-  !isDisabled ? (
-    <div {...innerProps}>{/* your component internals *//*>}</div>
-  ) : null;*/
-
   
 
   return (
       <>
 
-                  <Container>
-                      <Row>
-                      <Col>
+                  <Container >
+                      <Row >
+                      <Col xs="auto" className="m-2">
                         <Select 
                           getOptionLabel={option => option.attributes.name} 
                           getOptionValue={option => option.id}
@@ -91,13 +79,13 @@ function FilterButtons() {
                           onChange={value => filterResult(value ? value.attributes.name : null)}
                         />
                       </Col>
-                        <Col>
-                          <Button onClick={() => setProductsData(products)}>View all</Button>
-                        </Col>
+                      <Col xs="auto" className="m-2">
+                        <Button size="sm" className="btn--gray" onClick={() => setProductsData(products)}>View all</Button>
+                      </Col>
                       </Row>
 
 
-                          <Row>
+                          <Row className="my-3 mx-auto">
                           {productsData.map((item) => {
 
                               const productData = {
@@ -110,7 +98,6 @@ function FilterButtons() {
                               let id = item.id;
                               let name = item.attributes.name;
                               let price = item.attributes.price;
-                              let category = item.attributes.category;
 
                               const image = BASE_URL + item.attributes.image.data.attributes.url;
 
@@ -118,18 +105,21 @@ function FilterButtons() {
                                   <Card 
                                   key={id}
                                   as={Col}
-                                  style={{ minWidth: '14rem', maxWidth: '18rem', padding: "0" }} 
-                                  className="m-3 product"
+                                  style={{ minWidth: '14.5rem', padding: "0" }} 
+                                  className="m-2 product"
+                                  xs={10}
+                                  sm={2}
+                                  md={1}
+
                               >
                                   <Card.Body>
                                       <Card.Img variant="top" src={image} />
-                                      <Card.Text id="name" name="name" value={name}>{name}</Card.Text>
+                                      <Card.Text id="name" name="name" value={name} className="font-weight-bold">{name}</Card.Text>
                                       <Card.Text id="price" name="price" value={price}>${price}</Card.Text>
-                                      <Card.Text id={category.id} name="category" value={category.data.attributes.name}>Genre: {category.data.attributes.name}</Card.Text>
                                   </Card.Body>
-                                  <Card.Footer>
-                                      <Button size="sm" className="m-2"><Link to={`/products/${item.id}`}>Details</Link></Button>
-                                      <Button onClick={() => addItem(productData)} size="sm" className="m-2">Add to cart</Button>
+                                  <Card.Footer className="product-card__buttons">
+                                      <Button size="sm" className="btn--light-purple"><Link to={`/products/${item.id}`}><ChevronRight />Details</Link></Button>
+                                      <Button onClick={() => addItem(productData)} size="sm" className="btn--light-green"><CartPlus />Add to cart</Button>
                                   </Card.Footer>
                               </Card>
                           )})}

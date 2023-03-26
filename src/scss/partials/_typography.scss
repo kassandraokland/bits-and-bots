@@ -9,5 +9,12 @@
 
 .product-details h4 {
     text-transform: uppercase;
-    size: 14px;
+    size: 12px;
+}
+
+.footer {
+    p {
+        color: $color-light-pink;
+        font-weight: bold;
+    }
 }

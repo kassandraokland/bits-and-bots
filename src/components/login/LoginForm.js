@@ -21,16 +21,10 @@ const url = BASE_URL + "/api/auth/local";
 const schema = yup.object().shape({
 	identifier: yup.string()
 		.email()
-		//.matches(/(stud.noroff.no)/, { message : `Only "stud.noroff.no" email addresses are accepted.` })
 		.required("Please enter your email."),
 	password: yup.string()
 		.required({ message : "Please enter your password." | "Incorrect password." }),
 });
-
-/**	
-	password: yup.string()
-	.matches(`("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})")`)
-	.required("Please enter your password"), */
 
 
 export default function LoginForm() {
@@ -101,7 +95,7 @@ export default function LoginForm() {
 				</Form.Group>
 			
 	
-		  		<Button type="submit" className="mb-3"> 
+		  		<Button type="submit" className="mb-3 btn--green"> 
 			  		{submitting ? "Logging in..." : "Log in"}
 		  		</Button>
 

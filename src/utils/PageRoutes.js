@@ -5,20 +5,23 @@ import CartPage from "../components/cart/CartPage";
 import CheckoutPage from "../components/cart/CheckoutPage";
 import DetailsPage from "../components/products/DetailsPage";
 import NavLayout from "../components/layout/Nav";
-
+import Footer from "../components/layout/Footer";
 
 export default function MyRoutes () {
 
     return (
         <Router>
             <NavLayout/>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="products" element={<ProductPage />} />
-                <Route path="products/:id" element={<DetailsPage />} />
-                <Route path="cart" element={<CartPage />} />
-                <Route path="cart/checkout" element={<CheckoutPage />} />
-            </Routes>
+            <div className="layout">
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="products" element={<ProductPage />} />
+                    <Route path="products/:id" element={<DetailsPage />} />
+                    <Route path="cart" element={<CartPage />} />
+                    <Route path="cart/checkout" element={<CheckoutPage />} />
+                </Routes>
+            </div>
+            <Footer />
         </Router>
     );
 }

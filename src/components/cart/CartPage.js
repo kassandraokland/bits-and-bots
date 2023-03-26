@@ -6,12 +6,8 @@ import Col from "react-bootstrap/Col";
 
 export default function CartPage() {
 	return (
-		<Container>
-			<Row>
-				<Col className="m-5">
-					<Cart />
-				</Col>
-			</Row>
+		<Container className="py-5">
+			<Cart />
 		</Container>
 	);
 }

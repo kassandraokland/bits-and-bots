@@ -15,7 +15,6 @@ import AuthContext from "../../context/AuthContext";
 import FormError from "../common/FormError";
 import useLocalStorage from '../../hooks/useLocalStorage';
 import SubHeading from '../layout/SubHeading';
-import Alert from 'react-bootstrap/Alert';
 
 const url = BASE_URL + "/api/auth/local/register";
 
@@ -23,7 +22,6 @@ const schema = yup.object().shape({
     username: yup.string()
         .required("Please enter a username"),
     email: yup.string()
-        //.matches("^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+.)?[a-zA-Z]+.)?(stud.noroff).no$", { message : `Please enter an email address` })
         .required(`Please enter your email address`),
     password: yup.string()
         .min(8, "Password should contain a minimum of 8 characters.")
@@ -117,7 +115,7 @@ function RegisterForm() {
                     </Form.Group>
                 </Form.Group>
         
-                <Button type="submit" className="mb-3"> 
+                <Button type="submit" className="mb-3 btn--green"> 
                     {submitting ? "Signing up..." : "Sign up"}
                 </Button>   
             </Form>

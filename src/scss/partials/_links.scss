@@ -1,0 +1,94 @@
+a {
+    text-decoration: none;
+}
+
+.navbar-nav a {
+    color: $color-light-pink;
+}
+
+//.navbar-toggler, .navbar-toggler-collapsed, .navbar-toggler-icon
+
+/*nav a {
+    text-decoration: none;
+}*/
+
+.btn {
+    border-radius: 25px;
+    color: white;
+}
+
+.btn--green, .btn--green a {
+    background-color: $color-dark-green;
+
+    &:hover {
+        background-color: darken($color-dark-green, 10%);
+    }
+
+    &:active {
+        background-color: darken($color-dark-green, 20%) !important;
+    }
+}
+
+.btn--light-green {
+    background-color: $color-pastel-green;
+    color: #000;
+    border: 1px solid $color-dark-green;
+
+    &:hover {
+        background-color: darken($color-pastel-green, 10%);
+    }
+
+    &:active {
+        background-color: darken($color-pastel-green, 20%) !important;
+    }
+}
+
+.btn--light-purple {
+    background-color: $color-light-purple;
+    border: 1px solid $color-dark-purple;
+    
+
+    &:hover, & a:hover {
+        background-color: darken($color-light-purple, 10%);
+    }
+
+    &:active, & a:active {
+        background-color: darken($color-light-purple, 20%) !important;
+    }
+
+    a {
+        background-color: $color-light-purple;
+        color: #000;
+    }
+}
+
+.btn--highlight {
+    background-color: $color-highlight;
+    padding: 5px 12px;
+
+    &:hover {
+        background-color: darken($color-highlight, 10%);
+    }
+
+    &:active {
+        background-color: darken($color-highlight, 20%) !important;
+    }
+}
+
+.product-card__buttons {
+    .btn--light-purple {
+        margin-right: 1.3rem;
+    }
+}
+
+.btn--gray {
+    background-color: $color-dark;
+
+    &:hover {
+        background-color: lighten($color-dark, 10%);
+    }
+
+    &:active {
+        background-color: lighten($color-dark, 20%) !important;
+    }
+}

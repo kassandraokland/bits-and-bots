@@ -2,11 +2,15 @@
 
 $color-dark-purple: #35164C;
 
-$color-highlight: #AD2F68;
+$color-light-purple: #EBE6EF;
+
+$color-highlight: #8D1957;
 
 $color-light-pink: #ffd5ec;
 
 $color-light-green: #D1FFD6;
+
+$color-pastel-green: #E3F0E9;
 
 $color-dark-green: #31513F;
 
@@ -30,6 +34,13 @@ $theme-colors: (
     "dark": $color-dark,
     "light": $color-light,
 );
+
+
+//
+
+.navbar-dark {
+    color: $color-light-pink;
+}
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";

@@ -1,7 +1,5 @@
 import { useCart } from "react-use-cart";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 //import Container from "react-bootstrap/Container";
@@ -21,21 +19,21 @@ export default function CartSummary() {
     return (
         <>
   
-            <Card>
+            <Card className="cart-summary">
                 <Card.Header>
                     <Card.Title>Order Summary</Card.Title>
                 </Card.Header>
                 {items.map((item) => (
-                <Card.Body key={item.id} style={{ width: '20rem' }} className="product">
+                <Card.Body key={item.id}>
                     <Row>
                         <Col>
-                            <Card.Text>{item.title}</Card.Text>
+                            <Card.Text style={{ fontStyle: "italic"}}>{item.title}</Card.Text>
                         </Col>
                         <Col>
                             <Card.Text>Qty: {item.quantity}</Card.Text>
                         </Col>
                         <Col>
-                            <Card.Text>${item.price}</Card.Text>
+                            <Card.Text style={{ fontWeight: "bold"}}>${item.price}</Card.Text>
                         </Col>   
                     </Row>
                 </Card.Body>
