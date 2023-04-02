@@ -23,10 +23,16 @@ export default function HomePage({ children }) {
 					</Col>
 					<Col></Col>
 				</Row>
+				<Row>
+					<Col></Col>
+					<Col md={5} xs="auto" className="mt-5 mb-2">
+						<h4 className="text-muted">Register and log in to view our products</h4>
+					</Col>
+					<Col></Col>
+				</Row>
         		<Row>
 					<Col></Col>
-          			<Col md={5} xs="auto" className="my-5">
-						<h4>Register and log in to view our products</h4>
+          			<Col md={5} xs="auto" className="my-2">
 						<LoginRegisterTabs/>
           			</Col>
 					<Col></Col>

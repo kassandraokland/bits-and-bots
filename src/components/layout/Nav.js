@@ -37,7 +37,7 @@ function NavLayout() {
 				)}
 				<Navbar.Toggle aria-controls="basic-navbar-nav"/>
 				<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-					<Nav>
+					<Nav className="nav-menu">
 						{auth ? (
 							<Nav.Item><Link to="products" >Home</Link></Nav.Item>
 						) : (
