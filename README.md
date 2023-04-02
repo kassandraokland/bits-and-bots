@@ -32,7 +32,7 @@ Bits&Bots is an online vide game shop that is built with data from a Strapi API 
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/kassandraokland/noroff-bits-and-bots-kassandraokland.git
+git clone https://github.com/kassandraokland/bits-and-bots-kassandraokland.git
 ```
 
 
