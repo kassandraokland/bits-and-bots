@@ -1,4 +1,3 @@
-//import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +15,6 @@ import Modal from 'react-bootstrap/Modal';
 const schema = yup.object().shape({
     name: yup.string()
         .required("Please enter the name on the card"),
-        //.matches(/^\S+$/, { message : "Name may not contain spaces or punctuation symbols."}),
     address: yup.string()
         .required("Please enter an address"),
     cardNumber: yup.number()
@@ -52,7 +50,6 @@ function CheckoutForm() {
         resolver: yupResolver(schema),
     });
 
-    //const [, setAuth] = useContext(AuthContext);
 
     function onSubmit(data) {
         setSubmitting(true);
@@ -180,29 +177,3 @@ function CheckoutForm() {
 }
 
 export default CheckoutForm;
-
-/**        try {
-            redirect("products");
-        } catch (error) {
-            console.log("error", error);
-		    setCheckoutError(error.toString());
-            console.log(checkoutError);
-        } finally {
-            setSubmitting(false);
-        }    */
-
-/**
-        try {
-            const response = await axios.get(url, data);
-            console.log(response.data);
-            setAuth(response.data);
-            redirect("products");
-        } catch (error) {
-            console.log("error", error);
-		    setCheckoutError(error.toString());
-            console.log({checkoutError});
-        } finally {
-            setSubmitting(false);
-        }   
-    }
- */
