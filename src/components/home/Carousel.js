@@ -1,17 +1,15 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React, { useState, useEffect } from "react";
-import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/api";
+import axios from 'axios';
 
-
+const url = BASE_URL + "/api/slider-images?populate=*";
 
 function CarouselSlider() {
 
     const [slider, setSlider] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-
-	const http = useAxios();
 
     
 
@@ -20,7 +18,7 @@ function CarouselSlider() {
 		async function getMedia() {
 
 			try {
-				const response = await http.get(`/api/slider-images?populate=*`);
+				const response = await axios.get(url);
 				console.log("response", response);
 				setSlider(response.data);
                 console.log(response.data);
