@@ -1,15 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import Card from "react-bootstrap/Card";
 import { BASE_URL } from "../../constants/api";
-import Button from "react-bootstrap/Button";
-import { useCart } from "react-use-cart";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-//import GenreDropdown from "./GenreDropdown";
-//import ProductCard from "./ProductCard";
 
 
 
@@ -61,8 +53,8 @@ function CarouselSlider() {
                     alt="First slide"
                     />
                     <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>{image.attributes.sliderHeading}</h3>
+                    <p>{image.attributes.sliderParagraph}</p>
                     </Carousel.Caption>
                 </Carousel.Item>
 
