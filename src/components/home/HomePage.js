@@ -12,13 +12,13 @@ export default function HomePage({ children }) {
 				<Row>
 					<Col></Col>
 					<Col md={6} xs="auto" className="my-4">
-						<Heading content="Shop the newest video games" />
+						<Heading content="Welcome to Bits&Bots" />
 					</Col>
 					<Col></Col>
 				</Row>
 				<Row>
 					<Col></Col>
-					<Col md={8} xs="auto" className="">
+					<Col md={8} xs="auto" >
 					<CarouselSlider />
 					</Col>
 					<Col></Col>
@@ -26,6 +26,7 @@ export default function HomePage({ children }) {
         		<Row>
 					<Col></Col>
           			<Col md={5} xs="auto" className="my-5">
+						<h4>Register and log in to view our products</h4>
 						<LoginRegisterTabs/>
           			</Col>
 					<Col></Col>
